@@ -1,3 +1,7 @@
+<div align="center">
+	<img height="50" src="logo.svg">
+</div>
+
 # QtUtils
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://mit-license.org/)
@@ -59,7 +63,51 @@
 
 ## Content
 
-TODO
+### QtConnectionUtils
+
+#### Single-shot Connection
+
+This connection handling will be called only once.
+
+```cpp
+oclero::singleShotConnect(this, &SomeClass::someSignalTriggered, []() {
+  // Do stuff.
+});
+```
+
+### QtScopedConnection
+
+This connection will be closed when it is destroyed, i.e. when the scope it belongs ends. It's a RAII `QMetaObject::Connection`.
+
+```cpp
+oclero::QtScopedConnection scopedConnection = QObject::connect(this, &
+  SomeClass::someSignalTriggered, []() {
+    // Do stuff.
+  });
+```
+
+### QtEnumUtils
+
+- Converts `enum` to `QString` and vice-versa. Checks if the value is valid.
+
+  ```cpp
+  auto str = oclero::enumToString(SomeEnum::SomeValue);
+  auto value = oclero::enumFromString<SomeEnum>("SomeValue");
+  ```
+
+- Converts `enum` to `int` and checks if the value is valid.
+
+  ```cpp
+  auto value = oclero::enumFromInt(3);
+  ```
+
+### QtPointerUtils
+
+- A unique pointer that will call `QObject::deleteLater` instead of `delete` when its scope ends.
+
+  ```cpp
+  oclero::QtDeleteLaterScopedPointer<QObject> scopedPointer(rawPointer);
+  ```
 
 ## Author
 
