@@ -77,14 +77,22 @@ oclero::singleShotConnect(this, &SomeClass::someSignalTriggered, []() {
 
 ### QtScopedConnection
 
-This connection will be closed when it is destroyed, i.e. when the scope it belongs ends. It's a RAII `QMetaObject::Connection`.
+- This connection will be closed when it is destroyed, i.e. when the scope it belongs ends. It's a RAII `QMetaObject::Connection`.
 
-```cpp
-oclero::QtScopedConnection scopedConnection = QObject::connect(this, &
-  SomeClass::someSignalTriggered, []() {
+  ```cpp
+  oclero::QtScopedConnection scopedConnection = QObject::connect(this, &SomeClass::someSignalTriggered, []() {
     // Do stuff.
   });
-```
+  ```
+
+- This `QMetaObject::Connection` container will close its content RAII-style.
+
+  ```cpp
+  oclero::QtScopedConnections scopedConnections;
+  scopedConnections.add(QObject::connect(this, &SomeClass::someSignalTriggered, []() {
+    // Do stuff.
+  }));
+  ```
 
 ### QtEnumUtils
 
@@ -108,6 +116,16 @@ oclero::QtScopedConnection scopedConnection = QObject::connect(this, &
   ```cpp
   oclero::QtDeleteLaterScopedPointer<QObject> scopedPointer(rawPointer);
   ```
+
+### QtSettingsUtils
+
+Utilities to make saving and retrieving values with `QSettings` more convenient.
+
+```cpp
+auto value = oclero::loadSetting<int>("key", 3 /* default value */);
+oclero::saveSetting("key", 3);
+oclero::clearSetting("key");
+```
 
 ## Author
 
