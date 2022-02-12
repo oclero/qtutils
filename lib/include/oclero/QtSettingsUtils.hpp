@@ -32,7 +32,7 @@ std::optional<TValue> tryGetVariantValue(const QVariant& variant) {
 }
 
 template<typename TValue>
-std::optional<TValue> tryLoadSetting(QSettings& settings, const char* key) {
+std::optional<TValue> tryLoadSetting(const QSettings& settings, const char* key) {
   if constexpr (std::is_enum<TValue>()) {
     const auto variant_str = settings.value(key).toString();
     return tryGetEnumFromString<TValue>(variant_str);
@@ -43,19 +43,19 @@ std::optional<TValue> tryLoadSetting(QSettings& settings, const char* key) {
 }
 
 template<typename TValue>
-std::optional<TValue> tryLoadSetting(QSettings& settings, const QString& key) {
+std::optional<TValue> tryLoadSetting(const QSettings& settings, const QString& key) {
   const auto byteArray = key.toUtf8();
   const char* rawKey = byteArray.constData();
   return tryLoadSetting<TValue>(settings, rawKey);
 }
 
 template<typename TValue>
-TValue loadSetting(QSettings& settings, const char* key, const TValue& defaultValue = TValue()) {
+TValue loadSetting(const QSettings& settings, const char* key, const TValue& defaultValue = TValue()) {
   return tryLoadSetting<TValue>(settings, key).value_or(defaultValue);
 }
 
 template<typename TValue>
-TValue loadSetting(QSettings& settings, const QString& key, const TValue& defaultValue = TValue()) {
+TValue loadSetting(const QSettings& settings, const QString& key, const TValue& defaultValue = TValue()) {
   const auto byteArray = key.toUtf8();
   const char* rawKey = byteArray.constData();
   return loadSetting<TValue>(settings, rawKey, defaultValue);
