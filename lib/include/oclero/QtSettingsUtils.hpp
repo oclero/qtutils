@@ -78,7 +78,7 @@ void saveSetting(QSettings& settings, const QString& key, const TValue& value) {
   saveSetting<TValue>(settings, rawKey, value);
 }
 
-void clearSetting(const char* key);
+void clearSetting(QSettings& settings, const char* key);
 
-void clearSetting(const QString& key);
+void clearSetting(QSettings& settings, const QString& key);
 } // namespace oclero
