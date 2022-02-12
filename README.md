@@ -122,9 +122,10 @@ oclero::singleShotConnect(this, &SomeClass::someSignalTriggered, []() {
 Utilities to make saving and retrieving values with `QSettings` more convenient.
 
 ```cpp
-auto value = oclero::loadSetting<int>("key", 3 /* default value */);
-oclero::saveSetting("key", 3);
-oclero::clearSetting("key");
+QSettings settings;
+auto value = oclero::loadSetting<int>(settings, "key", 3 /* default value */);
+oclero::saveSetting(settings, "key", 3);
+oclero::clearSetting(settings, "key");
 ```
 
 ## Author
