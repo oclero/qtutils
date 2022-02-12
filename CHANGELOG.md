@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2
+
+- Fix missing implementation.
+
 ## v1.0.1
 
 - Pass `QSettings` as parameter in methods to allow custom settings path.
