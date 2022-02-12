@@ -1,8 +1,7 @@
 #include <oclero/QtSettingsUtils.hpp>
 
 namespace oclero {
-void clearSetting(const char* key) {
-  QSettings settings;
+void clearSetting(QSettings& settings, const char* key) {
   settings.remove(key);
 }
 

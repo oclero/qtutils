@@ -32,8 +32,7 @@ std::optional<TValue> tryGetVariantValue(const QVariant& variant) {
 }
 
 template<typename TValue>
-std::optional<TValue> tryLoadSetting(const char* key) {
-  QSettings settings;
+std::optional<TValue> tryLoadSetting(QSettings& settings, const char* key) {
   if constexpr (std::is_enum<TValue>()) {
     const auto variant_str = settings.value(key).toString();
     return tryGetEnumFromString<TValue>(variant_str);
@@ -44,27 +43,26 @@ std::optional<TValue> tryLoadSetting(const char* key) {
 }
 
 template<typename TValue>
-std::optional<TValue> tryLoadSetting(const QString& key) {
+std::optional<TValue> tryLoadSetting(QSettings& settings, const QString& key) {
   const auto byteArray = key.toUtf8();
   const char* rawKey = byteArray.constData();
-  return tryLoadSetting<TValue>(rawKey);
+  return tryLoadSetting<TValue>(settings, rawKey);
 }
 
 template<typename TValue>
-TValue loadSetting(const char* key, const TValue& defaultValue = TValue()) {
-  return tryLoadSetting<TValue>(key).value_or(defaultValue);
+TValue loadSetting(QSettings& settings, const char* key, const TValue& defaultValue = TValue()) {
+  return tryLoadSetting<TValue>(settings, key).value_or(defaultValue);
 }
 
 template<typename TValue>
-TValue loadSetting(const QString& key, const TValue& defaultValue = TValue()) {
+TValue loadSetting(QSettings& settings, const QString& key, const TValue& defaultValue = TValue()) {
   const auto byteArray = key.toUtf8();
   const char* rawKey = byteArray.constData();
-  return loadSetting<TValue>(rawKey, defaultValue);
+  return loadSetting<TValue>(settings, rawKey, defaultValue);
 }
 
 template<typename TValue>
-void saveSetting(const char* key, const TValue& value) {
-  QSettings settings;
+void saveSetting(QSettings& settings, const char* key, const TValue& value) {
   if constexpr (std::is_enum<TValue>()) {
     settings.setValue(key, QVariant::fromValue<QString>(enumToString(value)));
   } else {
@@ -74,10 +72,10 @@ void saveSetting(const char* key, const TValue& value) {
 }
 
 template<typename TValue>
-void saveSetting(const QString& key, const TValue& value) {
+void saveSetting(QSettings& settings, const QString& key, const TValue& value) {
   const auto byteArray = key.toUtf8();
   const char* rawKey = byteArray.constData();
-  saveSetting<TValue>(rawKey, value);
+  saveSetting<TValue>(settings, rawKey, value);
 }
 
 void clearSetting(const char* key);
