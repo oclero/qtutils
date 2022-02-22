@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.4
+
+- Add event filter utilities.
+
 ## v1.0.3
 
 - Use const for read-only QSettings
