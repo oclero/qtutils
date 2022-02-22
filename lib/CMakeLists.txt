@@ -8,6 +8,7 @@ find_package(Qt5
 set(HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtConnectionUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtEnumUtils.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtEventFilterUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtPointerUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtScopedConnection.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtSettingsUtils.hpp

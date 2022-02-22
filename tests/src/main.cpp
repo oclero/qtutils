@@ -5,6 +5,7 @@
 
 #include "QtConnectionUtilsTests.hpp"
 #include "QtEnumUtilsTests.hpp"
+#include "QtEventFilterUtilsTests.hpp"
 #include "QtPointerUtilsTests.hpp"
 #include "QtSettingsUtilsTests.hpp"
 
@@ -22,6 +23,7 @@ int main(int argc, char* argv[]) {
     // clang-format off
     QtConnectionUtilsTests,
     QtEnumUtilsTest,
+    QtEventFilterUtilsTest,
     QtPointerUtilsTest,
     QtSettingsUtilsTests
     // clang-format on

@@ -3,6 +3,7 @@ set(TESTS_TARGET_NAME ${PROJECT_NAME}Tests)
 find_package(Qt5
   REQUIRED
     Core
+    Widgets
     Test
 )
 
@@ -21,6 +22,8 @@ set(TESTS_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/src/QtConnectionUtilsTests.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/QtEnumUtilsTests.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/QtEnumUtilsTests.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/QtEventFilterUtilsTests.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/QtEventFilterUtilsTests.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/QtPointerUtilsTests.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/QtPointerUtilsTests.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/QtSettingsUtilsTests.cpp
@@ -38,6 +41,7 @@ target_link_libraries(${TESTS_TARGET_NAME}
   PRIVATE
     ${PROJECT_NAMESPACE}::${PROJECT_NAME}
     Qt5::Core
+    Qt5::Widgets
     Qt5::Test
 )
 add_test(NAME ${TESTS_TARGET_NAME}

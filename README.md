@@ -109,6 +109,20 @@ oclero::singleShotConnect(this, &SomeClass::someSignalTriggered, []() {
   auto value = oclero::enumFromInt(3);
   ```
 
+### QtEventFilterUtils
+
+Tired of writing a new class just to hook on an event? Now you can just write this:
+
+```cpp
+oclero::EventFilter<QEvent::MouseButtonPress>::install(watchedObject, [](QMouseEvent* e) {
+  // Do stuff.
+  // Return 'true' to block the event propagation, 'false' otherwise.
+  return false;
+});
+```
+
+All corresponding `QEvent`-derived classes have been mapped to their corresponding `QEvent::Type`, so you don't even have to cast the `QEvent` or worry about its type.
+
 ### QtPointerUtils
 
 - A unique pointer that will call `QObject::deleteLater` instead of `delete` when its scope ends.
@@ -131,6 +145,8 @@ oclero::clearSetting(settings, "key");
 ## Author
 
 **Olivier Cléro** | [email](mailto:oclero@pm.me) | [website](https://www.olivierclero.com) | [github](https://www.github.com/oclero) | [gitlab](https://www.gitlab.com/oclero)
+
+Thanks to Thomas Donel for his help.
 
 ## License
 
