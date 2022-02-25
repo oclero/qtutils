@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.5
+
+- Ensure the lib works on Linux.
+
 ## v1.0.4
 
 - Add event filter utilities.
