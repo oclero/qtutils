@@ -209,4 +209,55 @@ public:
     return new EventFilter<T>(watchedObject, eventCallback);
   }
 };
+
+/// EventFilter that allows to plug to a visibility change on a QWidget.
+class VisibilityEventFilter : private QObject {
+private:
+  using EventCallback = std::function<void(bool)>;
+  EventCallback _cb;
+  QWidget* _watched;
+
+  VisibilityEventFilter() = delete;
+
+  inline VisibilityEventFilter(QWidget* parent, const EventCallback& cb)
+    : QObject(parent)
+    , _cb(cb)
+    , _watched(parent) {
+    assert(parent);
+    parent->installEventFilter(this);
+  }
+
+protected:
+  inline virtual bool eventFilter(QObject* watchedObject, QEvent* evt) override {
+    const auto type = evt->type();
+    switch (type) {
+      case QEvent::Hide:
+        if (_cb) {
+          const auto minimized = _watched->windowState() == Qt::WindowState::WindowMinimized;
+          _cb(minimized);
+        }
+        break;
+      case QEvent::Show:
+        if (_cb) {
+          _cb(true);
+        }
+        break;
+      case QEvent::WindowStateChange:
+        if (_cb) {
+          const auto minimized = _watched->windowState() == Qt::WindowState::WindowMinimized;
+          _cb(minimized);
+        }
+        break;
+      default:
+        break;
+    }
+
+    return QObject::eventFilter(watchedObject, evt);
+  }
+
+public:
+  inline static VisibilityEventFilter* install(QWidget* watchedObject, const EventCallback& eventCallback) {
+    return new VisibilityEventFilter(watchedObject, eventCallback);
+  }
+};
 } // namespace oclero
