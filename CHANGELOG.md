@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.6
+
+- Add convenience event filter for visibility changes.
+
 ## v1.0.5
 
 - Ensure the lib works on Linux.
