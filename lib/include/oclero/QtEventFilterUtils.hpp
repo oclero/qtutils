@@ -189,6 +189,7 @@ private:
   EventFilter(QObject* parent, const EventCallback& eventCallback)
     : QObject(parent)
     , _eventCallback(eventCallback) {
+    assert(parent);
     parent->installEventFilter(this);
   }
 
