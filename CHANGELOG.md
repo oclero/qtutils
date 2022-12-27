@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.0
+
+- Add utility function to clear a directory content.
+
 ## v1.0.6
 
 - Add convenience event filter for visibility changes.
