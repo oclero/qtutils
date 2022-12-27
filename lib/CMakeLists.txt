@@ -9,6 +9,7 @@ set(HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtConnectionUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtEnumUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtEventFilterUtils.hpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtFileUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtPointerUtils.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtScopedConnection.hpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/oclero/QtSettingsUtils.hpp
@@ -16,6 +17,7 @@ set(HEADERS
 )
 
 set(SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/oclero/QtFileUtils.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/oclero/QtScopedConnection.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/src/oclero/QtSettingsUtils.cpp
 )
