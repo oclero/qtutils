@@ -5,7 +5,7 @@
 # QtUtils
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://mit-license.org/)
-[![CMake version](https://img.shields.io/badge/CMake-3.19+-064F8C?logo=cmake)](https://www.qt.io)
+[![CMake version](https://img.shields.io/badge/CMake-3.21+-064F8C?logo=cmake)](https://www.qt.io)
 [![C++ version](https://img.shields.io/badge/C++-17-00599C?logo=++)](https://www.qt.io)
 [![Qt version](https://img.shields.io/badge/Qt-5.15.2+-41CD52?logo=qt)](https://www.qt.io)
 
@@ -26,36 +26,28 @@
 ## Requirements
 
 - Platform: Windows, MacOS, Linux.
-- [CMake 3.19+](https://cmake.org/download/)
+- [CMake 3.21+](https://cmake.org/download/)
 - [Qt 5.15+](https://www.qt.io/download-qt-installer)
 
 ## Usage
 
-1. Add the library's repository as a Git submodule.
-
-   ```bash
-   git submodule add https://github.com/oclero/qtutils.git submodules/qtutils
-   ```
-
-2. Download submodules.
-
-   ```bash
-   git submodule update --init --recursive
-   ```
-
-3. Add the library to your CMake project.
+1. Add the library as a dependency with CMake FetchContent.
 
    ```cmake
-   add_subdirectory(submodules/qtutils)
+   include(FetchContent)
+   FetchContent_Declare(QtUtils
+    GIT_REPOSITORY "https://github.com/oclero/qtutils.git"
+   )
+   FetchContent_MakeAvailable(QtUtils)
    ```
 
-4. Link with the library in CMake.
+2. Link with the library in CMake.
 
    ```cmake
    target_link_libraries(your_project oclero::QtUtils)
    ```
 
-5. Include headers in your C++ file.
+3. Include headers in your C++ file.
 
    ```c++
    #include <oclero/QtConnectionUtils.hpp>

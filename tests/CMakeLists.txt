@@ -1,10 +1,9 @@
 set(TESTS_TARGET_NAME ${PROJECT_NAME}Tests)
 
-find_package(Qt5
-  REQUIRED
-    Core
-    Widgets
-    Test
+find_package(Qt5 REQUIRED
+  Core
+  Widgets
+  Test
 )
 
 add_executable(${TESTS_TARGET_NAME})

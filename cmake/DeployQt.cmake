@@ -6,7 +6,6 @@ function(target_deploy_qt TARGET_NAME)
     set(DEPLOYQT_NAME "macdeployqt")
   else()
     set(DEPLOYQT_NAME "")
-    message("Warning: Unsupported platform for Qt deployment")
   endif()
 
   if (DEPLOYQT_NAME)

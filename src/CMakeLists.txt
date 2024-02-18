@@ -17,9 +17,9 @@ set(HEADERS
 )
 
 set(SOURCES
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/oclero/QtFileUtils.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/oclero/QtScopedConnection.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/src/oclero/QtSettingsUtils.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/source/oclero/QtFileUtils.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/source/oclero/QtScopedConnection.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/source/oclero/QtSettingsUtils.cpp
 )
 
 # Configure target.
@@ -36,7 +36,7 @@ target_include_directories(${LIB_TARGET_NAME}
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   PRIVATE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/source>
 )
 
 target_link_libraries(${LIB_TARGET_NAME}
@@ -55,8 +55,6 @@ set_target_properties(${LIB_TARGET_NAME}
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     DEBUG_POSTFIX _debug
 )
-
-target_compile_features(${LIB_TARGET_NAME} PUBLIC cxx_std_17)
 
 target_compile_options(${LIB_TARGET_NAME} PRIVATE $<$<CXX_COMPILER_ID:MSVC>:/MP>)
 
