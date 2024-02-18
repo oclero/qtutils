@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.0
+
+- Rename `lib` folder into `src`, and `src` subfolder into `source`.
+- Add CI jobs to build and test on Windows, Linux and MacOS.
+- Add CMake presets.
+
 ## v1.1.0
 
 - Add utility function to clear a directory content.
