@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.0
+
+- Switch to Qt6.
+
 ## v1.2.1
 
 - Fix deployment on macOS.

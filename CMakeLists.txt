@@ -6,7 +6,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 # Set project information.
 project("QtUtils"
   LANGUAGES CXX
-  VERSION 1.2.1.0
+  VERSION 1.3.0.0
   DESCRIPTION "Set of tools for Qt6"
 )
 set(PROJECT_NAMESPACE "oclero")
