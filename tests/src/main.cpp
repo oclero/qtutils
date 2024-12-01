@@ -10,7 +10,7 @@
 #include "QtSettingsUtilsTests.hpp"
 
 int main(int argc, char* argv[]) {
-  QTEST_SET_MAIN_SOURCE_PATH;
+  QTEST_SET_MAIN_SOURCE_PATH
 
   // Necessary to get a socket name and to have an event loop running.
   QCoreApplication::setApplicationName("QtUtilsTests");

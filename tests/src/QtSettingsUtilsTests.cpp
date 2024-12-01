@@ -9,17 +9,13 @@ constexpr auto SETTINGS_KEY = "Toto";
 using namespace oclero;
 
 void QtSettingsUtilsTests::init() {
-  {
-    QSettings qSettings;
-    qSettings.remove(SETTINGS_KEY);
-  }
+  QSettings qSettings;
+  qSettings.remove(SETTINGS_KEY);
 }
 
 void QtSettingsUtilsTests::cleanup() {
-  {
-    QSettings qSettings;
-    qSettings.remove(SETTINGS_KEY);
-  }
+  QSettings qSettings;
+  qSettings.remove(SETTINGS_KEY);
 }
 
 void QtSettingsUtilsTests::test_tryLoadInexistentSetting_enum() const {
@@ -29,14 +25,18 @@ void QtSettingsUtilsTests::test_tryLoadInexistentSetting_enum() const {
 }
 
 void QtSettingsUtilsTests::test_tryLoadInvalidSetting_enum() const {
-  { QSettings{}.setValue(SETTINGS_KEY, "1"); }
+  {
+    QSettings{}.setValue(SETTINGS_KEY, "1");
+  }
   QSettings settings;
   auto const optionalValue = tryLoadSetting<DummyEnum>(settings, SETTINGS_KEY);
   QVERIFY(!optionalValue.has_value());
 }
 
 void QtSettingsUtilsTests::test_tryLoadValidSetting_enum() const {
-  { QSettings{}.setValue(SETTINGS_KEY, "DummyValue2"); }
+  {
+    QSettings{}.setValue(SETTINGS_KEY, "DummyValue2");
+  }
   QSettings settings;
   auto const optionalValue = tryLoadSetting<DummyEnum>(settings, SETTINGS_KEY);
   QVERIFY(optionalValue.has_value() && optionalValue.value() == DummyEnum::DummyValue2);
@@ -49,21 +49,27 @@ void QtSettingsUtilsTests::test_tryLoadInexistentSetting_int() const {
 }
 
 void QtSettingsUtilsTests::test_tryLoadInvalidSetting_int() const {
-  { QSettings{}.setValue(SETTINGS_KEY, "abc"); }
+  {
+    QSettings{}.setValue(SETTINGS_KEY, "abc");
+  }
   QSettings settings;
   auto const optionalValue = tryLoadSetting<int>(settings, SETTINGS_KEY);
   QVERIFY(!optionalValue.has_value());
 }
 
 void QtSettingsUtilsTests::test_tryLoadValidSetting_int() const {
-  { QSettings{}.setValue(SETTINGS_KEY, 42); }
+  {
+    QSettings{}.setValue(SETTINGS_KEY, 42);
+  }
   QSettings settings;
   auto const optionalValue = tryLoadSetting<int>(settings, SETTINGS_KEY);
   QVERIFY(optionalValue.has_value() && optionalValue.value() == 42);
 }
 
 void QtSettingsUtilsTests::test_loadValidSetting() const {
-  { QSettings{}.setValue(SETTINGS_KEY, 42); }
+  {
+    QSettings{}.setValue(SETTINGS_KEY, 42);
+  }
   QSettings settings;
   auto const value = loadSetting<int>(settings, SETTINGS_KEY);
   QVERIFY(value == 42);

@@ -1,8 +1,9 @@
 #pragma once
 
+#include <optional>
+
 #include <QMetaEnum>
 #include <QString>
-#include <optional>
 
 namespace oclero {
 template<typename TEnum>
@@ -40,7 +41,7 @@ TEnum enumFromString(const QString& str, const TEnum defaultValue = TEnum()) {
 
 template<typename TEnum>
 constexpr auto toUnderlyingType(const TEnum value) {
-  return static_cast<typename std::underlying_type<TEnum>::type>(value);
+  return static_cast<typename std::underlying_type_t<TEnum>>(value);
 }
 
 template<typename TEnum, typename TValue>

@@ -1,13 +1,12 @@
 #pragma once
 
 #include <QObject>
-
-#include <qcoreevent.h>
-#include <qevent.h>
-
-#include <QGestureEvent>
-#include <QStateMachine>
-#include "qgraphicssceneevent.h"
+#include <QEvent>
+#include <QtGui/QFileOpenEvent>
+#include <QtGui/QHelpEvent>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGraphicsSceneEvent>
+#include <QtWidgets/QGestureEvent>
 
 namespace oclero {
 
@@ -49,7 +48,7 @@ DECLARE_EVENT_TYPE(QEvent::Type::DragMove, QDragMoveEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::Drop, QDropEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::DynamicPropertyChange, QEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::EnabledChange, QEvent)
-DECLARE_EVENT_TYPE(QEvent::Type::Enter, QEvent)
+DECLARE_EVENT_TYPE(QEvent::Type::Enter, QEnterEvent)
 #if defined(QT_KEYPAD_NAVIGATION)
 DECLARE_EVENT_TYPE(QEvent::Type::EnterEditFocus, QEvent)
 #endif
@@ -134,8 +133,6 @@ DECLARE_EVENT_TYPE(QEvent::Type::ShortcutOverride, QKeyEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::Show, QShowEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::ShowToParent, QEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::SockAct, QEvent)
-DECLARE_EVENT_TYPE(QEvent::Type::StateMachineSignal, QStateMachine::SignalEvent)
-DECLARE_EVENT_TYPE(QEvent::Type::StateMachineWrapped, QStateMachine::WrappedEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::StatusTip, QStatusTipEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::StyleChange, QEvent)
 DECLARE_EVENT_TYPE(QEvent::Type::TabletMove, QTabletEvent)
@@ -194,7 +191,7 @@ private:
   }
 
 protected:
-  virtual bool eventFilter(QObject* watchedObject, QEvent* evt) override {
+  bool eventFilter(QObject* watchedObject, QEvent* evt) override {
     if (evt->type() == T && _eventCallback) {
       auto* const derivedEvent = static_cast<Event*>(evt);
       return _eventCallback(derivedEvent);
@@ -228,7 +225,7 @@ private:
   }
 
 protected:
-  inline virtual bool eventFilter(QObject* watchedObject, QEvent* evt) override {
+  inline bool eventFilter(QObject* watchedObject, QEvent* evt) override {
     const auto type = evt->type();
     switch (type) {
       case QEvent::Hide:
