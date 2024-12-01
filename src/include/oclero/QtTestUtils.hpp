@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QTest>
+#include <QtTest/QTest>
 
 namespace oclero {
 /// Return true if all tests pass, false otherwise.

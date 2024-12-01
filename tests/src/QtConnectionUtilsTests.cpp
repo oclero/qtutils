@@ -6,7 +6,7 @@
 #include <oclero/QtScopedConnection.hpp>
 
 void QtConnectionUtilsTests::test_singleShotConnect() {
-  int count = 0;
+  auto count = 0;
   oclero::singleShotConnect(this, &QtConnectionUtilsTests::signalTriggered, [&count]() {
     count++;
   });
@@ -16,7 +16,7 @@ void QtConnectionUtilsTests::test_singleShotConnect() {
 }
 
 void QtConnectionUtilsTests::test_scopedConnection() {
-  int count = 0;
+  auto count = 0;
   {
     oclero::QtScopedConnection scopedConnection =
       QObject::connect(this, &QtConnectionUtilsTests::signalTriggered, [&count]() {

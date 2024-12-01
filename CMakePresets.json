@@ -13,7 +13,7 @@
       "generator": "Xcode",
       "binaryDir": "${sourceDir}/_build",
       "cacheVariables": {
-        "Qt5_DIR": "/opt/homebrew/opt/qt/lib/cmake/Qt5"
+        "CMAKE_PREFIX_PATH": "/opt/homebrew/opt/qt/lib/cmake/Qt6"
       },
       "condition": {
         "type": "equals",
@@ -28,7 +28,7 @@
       "generator": "Visual Studio 17 2022",
       "binaryDir": "${sourceDir}/_build",
       "cacheVariables": {
-        "Qt5_DIR": "C:/Qt/5.15.2/msvc2019_64/lib/cmake/Qt5"
+        "CMAKE_PREFIX_PATH": "C:/Qt/6.8.0/msvc2022_64"
       },
       "condition": {
         "type": "equals",
@@ -55,7 +55,9 @@
       "displayName": "macOS",
       "configurePreset": "macos",
       "description": "Release build with Xcode for macOS",
-      "targets": ["QtUtils"],
+      "targets": [
+        "QtUtils"
+      ],
       "configuration": "Release",
       "condition": {
         "type": "equals",
@@ -68,7 +70,9 @@
       "displayName": "Tests for macOS",
       "configurePreset": "macos",
       "description": "Tests release build with Xcode for macOS",
-      "targets": ["QtUtilsTests"],
+      "targets": [
+        "QtUtilsTests"
+      ],
       "configuration": "Release",
       "condition": {
         "type": "equals",
@@ -81,7 +85,9 @@
       "displayName": "Windows",
       "configurePreset": "windows",
       "description": "Release build with Visual Studio for Windows",
-      "targets": ["QtUtils"],
+      "targets": [
+        "QtUtils"
+      ],
       "configuration": "Release",
       "condition": {
         "type": "equals",
@@ -94,7 +100,9 @@
       "displayName": "Tests for Windows",
       "configurePreset": "windows",
       "description": "Tests release build with Visual Studio for Windows",
-      "targets": ["QtUtilsTests"],
+      "targets": [
+        "QtUtilsTests"
+      ],
       "configuration": "Release",
       "condition": {
         "type": "equals",
@@ -107,7 +115,9 @@
       "displayName": "Linux",
       "configurePreset": "linux",
       "description": "Release build for Linux",
-      "targets": ["QtUtils"],
+      "targets": [
+        "QtUtils"
+      ],
       "configuration": "Release",
       "condition": {
         "type": "equals",
@@ -120,7 +130,9 @@
       "displayName": "Tests for Linux",
       "configurePreset": "linux",
       "description": "Tests release build for Linux",
-      "targets": ["QtUtilsTests"],
+      "targets": [
+        "QtUtilsTests"
+      ],
       "configuration": "Release",
       "condition": {
         "type": "equals",
@@ -139,8 +151,7 @@
       },
       "execution": {
         "noTestsAction": "error",
-        "stopOnFailure": false,
-        "rerun-failed": true
+        "stopOnFailure": false
       },
       "condition": {
         "type": "equals",
@@ -157,8 +168,7 @@
       },
       "execution": {
         "noTestsAction": "error",
-        "stopOnFailure": false,
-        "rerun-failed": true
+        "stopOnFailure": false
       },
       "condition": {
         "type": "equals",
@@ -175,8 +185,7 @@
       },
       "execution": {
         "noTestsAction": "error",
-        "stopOnFailure": false,
-        "rerun-failed": true
+        "stopOnFailure": false
       },
       "condition": {
         "type": "equals",

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <QMetaObject>
 #include <vector>
+
+#include <QMetaObject>
 
 namespace oclero {
 /**
@@ -26,7 +27,7 @@ public:
   /**
    * @brief Returns true if the connection is valid.
    */
-  operator bool() const;
+  explicit operator bool() const;
 
   /**
    * @brief Disconnects the connection.

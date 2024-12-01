@@ -1,5 +1,11 @@
 #pragma once
 
+#include <memory>
+#include <functional>
+
+#include <QMetaObject>
+#include <QObject>
+
 namespace oclero {
 /**
  * @brief Allows to connect to a signal a callaback that will be executed only once.

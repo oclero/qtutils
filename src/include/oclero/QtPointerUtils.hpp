@@ -1,7 +1,8 @@
 #pragma once
 
-#include <QObject>
 #include <memory>
+
+#include <QObject>
 
 namespace oclero {
 struct QtDeleteLater {

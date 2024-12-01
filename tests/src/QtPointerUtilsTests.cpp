@@ -5,7 +5,7 @@
 #include <oclero/QtPointerUtils.hpp>
 #include <oclero/QtConnectionUtils.hpp>
 
-void QtPointerUtilsTest::test_pointerShouldNotBeDeletedImmediately() {
+void QtPointerUtilsTest::test_pointerShouldNotBeDeletedImmediately() const {
   auto pointerDestroyed = false;
 
   auto rawPointer = new QObject;
