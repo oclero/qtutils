@@ -3,7 +3,6 @@
 #include <QObject>
 
 namespace oclero {
-#pragma region QtScopedConnection
 QtScopedConnection::QtScopedConnection() = default;
 
 QtScopedConnection::QtScopedConnection(QtScopedConnection&& other) noexcept {
@@ -46,10 +45,6 @@ void QtScopedConnection::set(const QMetaObject::Connection& connection) {
   _connection = connection;
 }
 
-#pragma endregion
-
-#pragma region QtScopedConnection
-
 QtScopedConnections::QtScopedConnections() {}
 
 QtScopedConnections::~QtScopedConnections() {
@@ -81,5 +76,4 @@ void QtScopedConnections::clear() {
   }
   _connections.clear();
 }
-#pragma endregion
 } // namespace oclero
